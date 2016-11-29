@@ -1,0 +1,42 @@
+body {
+  font-family: Helvetica;
+  padding: 2em;
+}  
+
+header h1 {
+  color: Chocolate  ;    
+  text-align: center;
+  font-size: 150px;   
+  font-family: 'Trebuchet MS', Helvetica, sans-serif; 
+}
+
+.skillset a:link{   
+  text-decoration: none;
+}
+
+section a {
+  display: flex;
+  justify-content: center;
+  color: black;
+  padding: 2px;
+  background-color: #BCF5A9 ;  
+}
+
+.skillset section a{
+  background-color: white;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  
+}
+
+.button {
+  padding: 0.75em 1.25em;
+  background-color: Chocolate;
+  opacity: 0.9;
+  width: 10em;
+  color: white;
+  justify-content: center;
+  
+}

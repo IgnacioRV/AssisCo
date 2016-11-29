@@ -1,0 +1,59 @@
+
+void procesar(unsigned char *mata, unsigned char *matb, unsigned char *matc, int n) {
+int i, j;
+for (i=0; i<n; i++) { for (j=0; j<n; j++) {
+          matc[i*n+j]=(mata[i*n+j] - matb[i*n+j]);
+          if (matc[i*n+j]>0)
+            matc[i*n+j]=255;
+          else
+            matc[i*n+j]=0;
+} }
+}
+
+
+movl 8(%ebp),%eax
+movl 12(%ebp),%ebx
+movl 16(%ebp),%ecx
+movl 20(%ebp), %edi
+movl $0, %esi
+imull %edi,%edi,%edi
+for: 
+cmp %edi, %esi
+jge endfor
+movl (%eax, %esi), %edx
+subl (%ebx, %esi), %edx
+cmp $0, %edx
+jle else
+movl $255, (%ecx, %esi)
+jmp endif
+else:
+movl $0, (%ecx, %esi)
+endif:
+incl %esi
+jmp for
+
+endfor:
+
+
+// 10.5
+movl (&mata),%eax
+movl (&matb),%ebx
+movl (&matc),%ebc
+movl $0, %esi
+imull (&n),(&n), %edi
+for: 
+cmp %edi, %esi
+jge endfor
+movl (%eax,%esi), %edx
+subl (%ebxm, %esi), %edx
+cmp $0, %edx
+jle else
+movl $255, (%ecx, %esi)
+jmp endif
+else:
+movl $0, (%ecx, %esi)
+endif:
+addl $16, %esi
+jmp for
+
+endfor:
