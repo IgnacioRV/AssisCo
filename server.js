@@ -32,6 +32,7 @@ var init = function(){
 	  	c["nom"] = (item.split(';'))[0];
 	  	c["capacitat"] = parseInt((item.split(';'))[1]);
 	  	c["alumnes"] = 0;
+	  	c["assignatura"] = "assignatura no definida"
 	  	classes.push(c);
 	  });
 	});
@@ -83,7 +84,9 @@ app.get('/api/classesByNom/:nom', function(req, res){
 			found = true; 
 			res.send({	
 				"nom" : classes[i].nom,
-				"capacitat" : classes[i].capacitat
+				"capacitat" : classes[i].capacitat,
+				"alumnes" : classes[i].alumnes,
+				"assignatura" : classes[i].assignatura
 			});
 			break; 
 		}
@@ -121,6 +124,39 @@ app.get('/api/addclass', function(req, res){
 	//write new class to file
 	fs.appendFile('input', '\n'+newClass.nom+";"+newClass.capacitat, function (err) { });
 	res.send(newClass);
+});
+
+app.get('/api/setsubject', function(req, res){
+	var query = req.query;
+	var nom = query.nom;
+	var subject = query.subject;
+
+	// - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	var found = false;
+	for (var i = 0; i < classes.length && !found; i++)	{
+		console.log(classes[i].nom+ " = "+ i);
+		console.log(classes[i].nom == nom);	
+		if (classes[i].nom == nom){
+			found = true; 
+			classes[i].assignatura = subject;
+
+			res.send({	
+				"nom" : classes[i].nom,
+				"capacitat" : classes[i].capacitat,
+				"alumnes" : classes[i].alumnes,
+				"assignatura" : classes[i].assignatura
+			});
+			break; 
+		}
+	}
+	if (!found) {
+		res.send({	
+			"nom" : "not found",
+			"capacitat" : -1
+		});
+	}
+	// - - - - - - - - - - - - - - - - - - - - - - - - - -
 });
 
 app.get('/api/addAlumne/:class', function(req, res){

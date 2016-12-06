@@ -4,9 +4,13 @@ function foo (response){
   //$("#noms").append("<p> Classe: "+ nom +", Màxima capacitat: "+ capacitat +"</p>");
   //$("#id").html(response[2].capacitat);
   console.log(response);
-  $("#capacitat").append(response.capacitat);
-  $('#numAlumnes').append(response.numalumnes);   /* buscar com es diu a server  */
-  $('#subject').append(response.subject);   /* buscar como es diu al server */
+  $("#classname").text("Class: " + response.nom);
+  
+  $("#capacitat").text("Capacity: " + response.capacitat);
+  $('#numAlumnes').text("Current number of students: "+response.alumnes); 
+  $('#subject').text("Subject: "+response.assignatura);   
+  
+
 };
 
 function main(){
