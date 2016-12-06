@@ -5,7 +5,8 @@
 <html>
   <head>
     <title> Campus Nord</title>
-    <link rel='stylesheet' type='text/css' href='webdef.css'>	
+
+    <link rel="stylesheet" type='text/css' href="/public/webdef.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 
   </head>
@@ -23,13 +24,13 @@
 
     <section class="container">
       <div class="row">        
-        <a class="col-sm-4" href="webdef.html">UPC Campus Nord</a>
-        <a class="col-sm-4" href="aboutUs.html">About us</a>
-        <a class="col-sm-4" href="contact.html">Contact</a>        
+        <a class="col-sm-4 campus" >UPC Campus Nord</a>  <!-- href="webv2.html" -->
+        <a class="col-sm-4 nosotros" >About us</a> <!-- href="aboutUs.html" -->
+        <a class="col-sm-4 contacto" ">Contact</a> <!-- href="contact.html -->    
       </div>
     </section>
       
-    <div id='buildings' classe ="skillset">
+    <div id='buildings' class ="skillset">
       <section class="container text-center">
         <h2>UPC Campus Nord: Buildings</h2>
         <div class="row">
@@ -49,7 +50,7 @@
       </section>  
     </div>
 
-  <div id = "floors" classe ="skillset">      
+  <div id = "floors" class ="skillset">      
       <section class="container  text-center" >
         <h2>UPC Campus Nord: Floors</h2>
         <div class="row">
@@ -63,13 +64,13 @@
       </section>  
     </div>    
 
- <div id="classes" classe ="skillset">
+  <div id="classes" class ="skillset">
       <section class="container text-center">
         <h2>UPC Campus Nord: Classes</h2>
         <div class="row">
           <a class="col-sm-4 classe" id = "01">
             <div class='button' ><b>01</b></div></a>
-          <a class="col-sm-4 classe" id = "02" 
+          <a class="col-sm-4 classe" id = "02"> 
             <div class='button' ><b>02</b></div></a>
           <a class="col-sm-4 classe" id = "03">
             <div class='button' ><b>03</b></div></a>
@@ -83,11 +84,25 @@
       </section>  
     </div>
 
-    <div class="container  text-center">
+    <div id="info" class="container  text-center">
       <h2>Class Capacity</h2>
       <p id = "capacitat">Capacity:</p>
       <p id ="numAlumnes">Current number of students:</p>
       <p id ="subject">Subject:</p>
+    </div>
+
+    <div id="contact" > 
+      <section class="container">        
+        <h2>Contact us</h2>
+        <p>Email: assisco@assisco.com</p>
+      </section>
+    </div>
+
+    <div id= "aboutUs">
+      <section class="container">        
+        <h2>About us</h2>    
+        <p> We are a group of students of UPC and we are making a project for our subject PBE. It consists of a control assistance of UPC's classes and it will also help studnets to know which ones are full or free.</p>
+      </section>
     </div>
 
     <footer class="container  text-center">
@@ -96,8 +111,10 @@
       </div>
     </footer>
 
-    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>  <!-- add jQuery, a library to interact with DOM easily -->
-    <script src='maindef.js'></script>
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script> 
+    <script src='public/mainv2.js'></script>
+    <script src='public/main.buttons.js'></script>
+    
 
   </body>
 </html>

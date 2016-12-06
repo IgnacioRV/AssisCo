@@ -5,6 +5,8 @@ var path = process.cwd();
 app.use('/controllers', express.static(process.cwd() + '/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
 
+app.use('./', express.static(process.cwd()));
+
 var classes = [ ];
 
 var init = function(){
@@ -37,9 +39,9 @@ var init = function(){
 
 init();
 
-app.get('/', function (req,res) {
-	res.sendFile(path + '/public/client.html');
-});
+app.get('/' ,function (req, res) {
+			res.sendFile(path +'/public/index.html');
+		});
 
 app.get('/status',function(req, res){
 	var x = {
