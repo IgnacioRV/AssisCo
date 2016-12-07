@@ -4,10 +4,18 @@ var app = express();
 var path = process.cwd();
 app.use('/controllers', express.static(process.cwd() + '/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
-
+/*
+	TODO: 
+		Add alumne ID to class
+		Count mean attendance rate
+*/
 app.use('./', express.static(process.cwd()));
 
-var classes = [ ];
+// Container for the names of the classes + capacity + current number of students 
+var classes = [];
+
+// Container for the names of alumnes in the class 
+var alumnes = [];
 
 var init = function(){
 	
@@ -53,7 +61,9 @@ app.get('/status',function(req, res){
 	};
 	res.send(x);
 });
-
+app.get('/control', function (req, res){
+	res.sendFile(path +'/public/controlpanel.html');
+})
 app.get('/api/classes/:num', function(req, res){
 	var i = parseInt(req.params.num);
 	console.log(i);
@@ -105,7 +115,8 @@ app.get('/api/classes',function(req, res){
 		x.push({
 			"classe" : classes[i].nom,
 			"capacitat" : classes[i].capacitat,
-			"alumnes": classes[i].alumnes
+			"alumnes": classes[i].alumnes,
+			"assignatura": classes[i].assignatura
 		});
 	}
 	res.send(x);
@@ -117,7 +128,8 @@ app.get('/api/addclass', function(req, res){
 	var query = req.query;
 	var newClass = {
 		"nom" : query.nom,
-		"capacitat" : parseInt(query.capacitat)
+		"capacitat" : parseInt(query.capacitat),
+		"alumnes": 0
 	};
 	console.log(newClass);
 	classes.push(newClass);

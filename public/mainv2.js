@@ -9,8 +9,6 @@ function foo (response){
   $("#capacitat").text("Capacity: " + response.capacitat);
   $('#numAlumnes').text("Current number of students: "+response.alumnes); 
   $('#subject').text("Subject: "+response.assignatura);   
-  
-
 };
 
 function main(){

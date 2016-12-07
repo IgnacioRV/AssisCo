@@ -1,0 +1,53 @@
+.title {
+  color: black;
+}
+
+#classes {
+  text-align: center;
+  font-size: 16px;
+  display: none;
+}
+
+#addclasse {
+  text-align: center;
+  font-size: 16px;
+  display: none;
+}
+
+#stats {
+  display: none;
+}
+
+#terms {
+  width: 25%;
+  margin-right: 2%;
+}
+
+#offset {
+  text-align: center;
+  width: 10%;
+  margin-right: 5%;
+}
+
+.well {
+  background-color: #98E2D5;
+  border-color: #98E2D5;
+  border-radius: 0%;
+}
+
+body {
+  background-color: #F3F0CD;
+}
+
+div {
+  margin: 3px;
+}
+
+.btn {
+  background-color: #036A93;
+}
+
+#description {
+  margin-top: 30px;
+  padding-top: 0px;
+}
