@@ -92,6 +92,7 @@ function main(){
   })
 
   $('.nosotros').click(function(){
+    $('#buildings').hide();
     $('#aboutUs').show();
     $('#floors').hide();
     $('#classes').hide();
@@ -100,6 +101,7 @@ function main(){
   })
 
   $('.contacto').click(function(){
+    $('#buildings').hide();
     $('#contact').show();
     $('#floors').hide();
     $('#classes').hide();
