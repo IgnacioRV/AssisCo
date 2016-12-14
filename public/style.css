@@ -18,6 +18,12 @@
   display: none;
 }
 
+#setAlumnesDiv {
+  text-align: center;
+  font-size: 16px;
+  display: none;
+}
+
 #terms {
   width: 25%;
   margin-right: 2%;

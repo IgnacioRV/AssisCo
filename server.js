@@ -4,16 +4,20 @@ var app = express();
 var path = process.cwd();
 app.use('/controllers', express.static(process.cwd() + '/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
+
 /*
+
 	TODO: 
-		Add alumne ID to class
-		Count mean attendance rate
+	Add alumne ID to class
+	Count mean attendance rate
+
 */
 app.use('./', express.static(process.cwd()));
 
 // Container for the names of the classes + capacity + current number of students 
 var classes = [];
 
+var numalumnes = 0;
 // Container for the names of alumnes in the class 
 var alumnes = [];
 
@@ -48,6 +52,12 @@ var init = function(){
 
 init();
 
+/* 
+
+	SERVER BEHAVIOR
+
+*/
+
 app.get('/' ,function (req, res) {
 			res.sendFile(path +'/public/index.html');
 		});
@@ -71,7 +81,9 @@ app.get('/api/classes/:num', function(req, res){
 	if (i < classes.length){
 		res.send({	
 			"nom" : classes[i].nom,
-			"capacitat" : classes[i].capacitat
+			"capacitat" : classes[i].capacitat,
+			"alumnes" : classes[i].alumnes,
+			"assignatura" : classes[i].assignatura
 		});
 	}
 	else {
@@ -129,7 +141,8 @@ app.get('/api/addclass', function(req, res){
 	var newClass = {
 		"nom" : query.nom,
 		"capacitat" : parseInt(query.capacitat),
-		"alumnes": 0
+		"alumnes": 0,
+		"assignatura" : "assignatura no definida"
 	};
 	console.log(newClass);
 	classes.push(newClass);
@@ -143,6 +156,9 @@ app.get('/api/setsubject', function(req, res){
 	var nom = query.nom;
 	var subject = query.subject;
 
+	console.log("nom = " + nom);
+
+	console.log("subject = " + subject);
 	// - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 	var found = false;
@@ -152,7 +168,7 @@ app.get('/api/setsubject', function(req, res){
 		if (classes[i].nom == nom){
 			found = true; 
 			classes[i].assignatura = subject;
-
+			classes[i].alumnes = 0;
 			res.send({	
 				"nom" : classes[i].nom,
 				"capacitat" : classes[i].capacitat,
@@ -176,18 +192,35 @@ app.get('/api/addAlumne/:class', function(req, res){
 	var num;
 	for (var i = 0; i < classes.length; i++){ 
 		if (classes[i].nom == classNum){
+			if (classes[i].capacitat <= classes[i].alumnes) {
+				res.send("L'Alumne no s'ha afegit ja que la classe esta plena");
+			}
+			else {
 			classes[i].alumnes++;
 			num = classes[i].alumnes;
+			res.send("Alumne afegit correctament \n Actualment hi ha " + num + " alumnes a la classe " +classNum);
+			}
 		}
 	}
-	res.send("Alumne afegit correctament \n Actualment hi ha " + num + " alumnes a la classe " +classNum);
+});
+
+app.get('/api/setalumnes', function(req, res){
+	var query = req.query;
+	var nom = query.nom;
+	var alumnes = query.alumnes;
+	console.log("nom "+ nom +" alumnes "+alumnes);
+	for (var i = 0; i < classes.length; i++){ 
+		if (classes[i].nom == nom){
+			if (classes[i].capacitat >= alumnes) {
+				classes[i].alumnes = alumnes;
+			}
+			res.send(classes[i]);
+		}
+	}
 });
 
 app.get('/:else',function(req, res){
 	var x = 5;
 	res.send(403);
 });
-
-
-
 app.listen(8080);

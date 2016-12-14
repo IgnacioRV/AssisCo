@@ -4,7 +4,7 @@ killall cat
 cat /dev/hidraw0 > output & 
 node RFIDPARSER.js 
 */
-const spawn = require('child_process').spawn;
+
 var fs = require("fs"); //Load the filesystem module
 var oldLogSize = 0; 
 var working = false; 
@@ -21,8 +21,10 @@ function run (){
 			//WORK WITH FILE
 		}
 	}
+	
  	}
 }
+
 function showfile(){
 	console.log("We're going to work!");
 	working = true;
@@ -44,6 +46,7 @@ function showfile(){
 				if (counter == 11) {
 					id = Math.floor(id/10);
 					console.log("id = " + id);
+					alumnes.push(id);
 					// TODO: WORK WITH ID
 					id = 0;
 					counter = 0;
@@ -57,12 +60,7 @@ function showfile(){
 
 var exec = require('child_process').exec;
 
-/*
-function execute(command, callback){
-	    exec(command, function(error, stdout, stderr){ callback(stdout); });
-};
 
-*/
 run();
 
 
