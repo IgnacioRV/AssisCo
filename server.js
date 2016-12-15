@@ -44,7 +44,8 @@ var init = function(){
 	  	c["nom"] = (item.split(';'))[0];
 	  	c["capacitat"] = parseInt((item.split(';'))[1]);
 	  	c["alumnes"] = 0;
-	  	c["assignatura"] = "assignatura no definida"
+	  	c["assignatura"] = "assignatura no definida";
+	  	c["ids"] = {};
 	  	classes.push(c);
 	  });
 	});
@@ -142,7 +143,8 @@ app.get('/api/addclass', function(req, res){
 		"nom" : query.nom,
 		"capacitat" : parseInt(query.capacitat),
 		"alumnes": 0,
-		"assignatura" : "assignatura no definida"
+		"assignatura" : "assignatura no definida",
+		"ids" : {}
 	};
 	console.log(newClass);
 	classes.push(newClass);

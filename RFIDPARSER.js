@@ -5,23 +5,24 @@ cat /dev/hidraw0 > output &
 node RFIDPARSER.js 
 */
 
+var className = "A3001"
+var serverCall = require ("./postrequest.js");
 var fs = require("fs"); //Load the filesystem module
 var oldLogSize = 0; 
 var working = false; 
 function run (){
 	while (1){
-	if (!working){
-		var stats = fs.statSync("output");
-		var newLogSize = stats["size"];
+		if (!working){
+			var stats = fs.statSync("output");
+			var newLogSize = stats["size"];
 
- 		if (newLogSize != oldLogSize){
- 			console.log("Size has changed");
-			oldLogSize = newLogSize;
-	 		showfile();
-			//WORK WITH FILE
+	 		if (newLogSize != oldLogSize){
+	 			console.log("Size has changed");
+				oldLogSize = newLogSize;
+		 		showfile();
+				//WORK WITH FILE
+			}
 		}
-	}
-	
  	}
 }
 
@@ -54,6 +55,7 @@ function showfile(){
 			}
 		}
 	}
+	serverCall.serverRequest( , alumnes[alumnes.length -1]);
 	//console.log(result.toString());
 	working = false;
 	};
