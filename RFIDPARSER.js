@@ -29,6 +29,9 @@ function run (){
 function showfile(){
 	console.log("We're going to work!");
 	working = true;
+	var exec2 = require('child_process').execSync;
+	var result2 = exec2('node test.js');
+
 	var exec = require('child_process').execSync;
 	var result = exec('hexdump output');
 
