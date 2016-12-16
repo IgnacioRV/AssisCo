@@ -1,6 +1,17 @@
 .title {
   color: black;
 }
+.btn.submitbutton{
+  margin-top: 5px;
+  background-color: #2DCC70;
+  border-color: #2DCC70;
+}
+.btn.submitbutton:hover{
+  margin-top: 5px;
+  background-color: #27AE61;
+  border-color: #27AE61;
+
+}
 
 #classes {
   text-align: center;
@@ -50,7 +61,14 @@ div {
 }
 
 .btn {
-  background-color: #036A93;
+  background-color: #1CBB9B;
+  border-color: #1CBB9B;
+  color:white;
+}
+
+.btn:hover{
+  background-color: #16A086;
+  border-color: #16A086;
 }
 
 #description {
