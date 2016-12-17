@@ -19,7 +19,6 @@
   margin-top: 5px;
   background-color: #27AE61;
   border-color: #27AE61;
-
 }
 
 #classes {
@@ -75,6 +74,21 @@ div {
 .btn {
   background-color: #1CBB9B;
   border-color: #1CBB9B;
+  color:white;
+}
+#logout{
+  background-color: #D32F2F;
+  border-color: #D32F2F;
+  color:white;
+}
+#logout:hover{
+  background-color: #C62828;
+  border-color: #C62828;
+  color:white;
+}
+#logout:focus{
+  background-color: #C62828;
+  border-color: #C62828;
   color:white;
 }
 button{

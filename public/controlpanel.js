@@ -71,6 +71,58 @@ function changesubject(){
     });
 	
 }
+function trylogin(){
+  var username = $("#username").val();
+  var password = $("#password").val();
+  console.log(username);
+  console.log(password);
+  var classesUrl = window.location.origin +'/api/login?username='+username+"&password="+password;
+    
+    $.ajax({
+          url: classesUrl,
+          contentType: 'application/json; charset=utf-8',
+          cache: false,
+          type: "GET",
+          success: function(response) {
+              console.log(response);
+              if (response.status != "NOPE"){
+                location.reload();
+              }
+              else {
+                alert("Login failed, try again")
+              }
+          },
+          error: function(xhr) {
+            console.log("error")
+          }
+    });
+}
+
+function trylogout(){
+  var username = $("#username").val();
+  var password = $("#password").val();
+  console.log(username);
+  console.log(password);
+  var classesUrl = window.location.origin +'/api/logout';
+    $.ajax({
+          url: classesUrl,
+          contentType: 'application/json; charset=utf-8',
+          cache: false,
+          type: "GET",
+          success: function(response) {
+              console.log(response);
+              if (response.status != "NOPE"){
+                location.reload();
+              }
+              else {
+                alert("Logout failed, try again")
+              }
+          },
+          error: function(xhr) {
+            console.log("error")
+          }
+    });
+}
 
 function run(){
 	var classname = $("#cname2").val();

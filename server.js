@@ -58,6 +58,8 @@ init();
 	SERVER BEHAVIOR
 
 */
+var profes = [{name :"Nacho", password:"1234"},
+			  {name :"JP", password:"password"}];
 
 app.get('/' ,function (req, res) {
 			res.sendFile(path +'/public/index.html');
@@ -72,9 +74,12 @@ app.get('/status',function(req, res){
 	};
 	res.send(x);
 });
+var logged = false;
 app.get('/control', function (req, res){
-	res.sendFile(path +'/public/controlpanel.html');
+	if (logged) res.sendFile(path +'/public/controlpanel.html');
+	else res.sendFile(path +'/public/login.html');
 })
+
 app.get('/api/classes/:num', function(req, res){
 	var i = parseInt(req.params.num);
 	console.log(i);
@@ -135,8 +140,34 @@ app.get('/api/classes',function(req, res){
 	res.send(x);
 });
 
-
-
+app.get('/api/login', function(req, res){
+	var query = req.query;
+	var found = false;
+	for (var i = 0; i<profes.length; i++){
+		if (profes[i].name == query.username && profes[i].password == query.password) found = true;
+ 	}
+ 	if (!found){
+	var status = {
+		"status" : "NOPE",
+	};
+	logged = false;
+	res.send(status);
+ 	}
+ 	else {
+ 		var status = {
+		"status" : "OK",
+		};
+		logged = true;
+		res.send(status);
+ 	}
+});
+app.get('/api/logout', function(req, res){
+	var status = {
+		"status" : "OK",
+	};
+	logged = false;
+	res.send(status);
+});
 app.get('/api/addclass', function(req, res){
 	var query = req.query;
 	var found = false;
