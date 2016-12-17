@@ -2,7 +2,11 @@ body {
   font-family: Helvetica;
   padding: 2em;
 }  
-
+#pic {
+  width: 50%;
+  margin-left: 50%;
+  margin-top: -2%
+}
 header h1 {
   color: Chocolate  ;    
   text-align: center;
@@ -33,11 +37,13 @@ h2 {
 }
 
 .button {
+  margin : 2%;
   padding: 0.75em 1.25em;
   background-color: Chocolate;
   opacity: 0.9;
-  width: 10em;
+  width: 80%;
   color: white;
   justify-content: center;
   
 }
+

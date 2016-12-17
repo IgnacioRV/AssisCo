@@ -44,7 +44,7 @@ var init = function(){
 	  	c["nom"] = (item.split(';'))[0];
 	  	c["capacitat"] = parseInt((item.split(';'))[1]);
 	  	c["alumnes"] = 0;
-	  	c["assignatura"] = "assignatura no definida";
+	  	c["assignatura"] = " - ";
 	  	c["ids"] = {};
 	  	classes.push(c);
 	  });
@@ -139,18 +139,28 @@ app.get('/api/classes',function(req, res){
 
 app.get('/api/addclass', function(req, res){
 	var query = req.query;
+	var found = false;
+	for (var i = 0; i<classes.length; i++){
+		if (classes[i].nom == query.nom) found = true;
+ 	}
+ 	if (!found){
+
 	var newClass = {
 		"nom" : query.nom,
 		"capacitat" : parseInt(query.capacitat),
 		"alumnes": 0,
-		"assignatura" : "assignatura no definida",
+		"assignatura" : " - ",
 		"ids" : {}
 	};
 	console.log(newClass);
 	classes.push(newClass);
 	//write new class to file
 	fs.appendFile('input', '\n'+newClass.nom+";"+newClass.capacitat, function (err) { });
-	res.send(newClass);
+	res.send(newClass);	
+ 	}
+ 	else {
+ 		res.send('Class not added');
+ 	}
 });
 
 app.get('/api/setsubject', function(req, res){

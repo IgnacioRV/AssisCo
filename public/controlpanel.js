@@ -107,7 +107,26 @@ function populateStats (){
           type: "GET",
           success: function(response) {
               console.log(response);
-              $("#stats").text("");
+              //$("#stats").text("");
+              $("#classTable").find('tbody').text("");
+              $("#classTable").find('tbody')
+                .append($('<tr>')
+                    .append($('<td>')
+                            .append(" Class ")
+                        )
+                    .append($('<td>')
+                            .append(" Capacity ")
+                        )
+                    .append($('<td>')
+                            .append(" Subject ")
+                        )
+                    .append($('<td>')
+                            .append(" Students in class ")
+                        )
+                     .append($('<td>')
+                            .append(" Attendance rate ")
+                        )
+                    );
               var total = 0;
               for (var i = 0; i < response.length; i++){
                 if (response[i].classe != ""){
@@ -115,14 +134,30 @@ function populateStats (){
                   console.log (assistencia);
                   console.log(total);
                   total += assistencia;
-                	var str = "<div > Name: " + response[i].classe + " Capacity: "+ response[i].capacitat; 
-                	str+= "<br> Subject: " + response[i].assignatura + " Current number of students: "+ response[i].alumnes+" Attendance rate: "+assistencia+"%</div>" 
-                  $("#stats").append(str);
+                	$("#classTable").find('tbody')
+                    .append($('<tr>')
+                        .append($('<td>')
+                            .append(response[i].classe)
+                        )
+                    .append($('<td>')
+                            .append(response[i].capacitat)
+                        )
+                    .append($('<td>')
+                            .append(response[i].assignatura)
+                        )
+                    .append($('<td>')
+                            .append(response[i].alumnes)
+                        )
+                    .append($('<td>')
+                            .append(assistencia + "%")
+                        )
+                    );
                 }
+
               }
               console.log(total);
               var str = "<div >Average attendance rate: "+ Math.round(total / response.length) +"%</div>" 
-                $("#stats").append(str);
+              $("#classTable").find('tbody').append(str);
               
           },
           error: function(xhr) {

@@ -1,5 +1,14 @@
 .title {
-  color: black;
+  color: #004D40;
+  margin-top: 10px;
+  margin-bottom: 30px;
+
+}
+
+#pic {
+  width: 50%;
+  margin-left: 50%;
+  margin-top: -2%
 }
 .btn.submitbutton{
   margin-top: 5px;
@@ -25,7 +34,10 @@
   display: none;
 }
 
-#stats {
+#classTable {
+  margin: 0 auto;
+}
+#stats{
   display: none;
 }
 
@@ -53,7 +65,7 @@
 }
 
 body {
-  background-color: #F3F0CD;
+  background-color: white;
 }
 
 div {
@@ -65,10 +77,18 @@ div {
   border-color: #1CBB9B;
   color:white;
 }
-
+button{
+  color: white;
+}
 .btn:hover{
   background-color: #16A086;
   border-color: #16A086;
+  color:white;
+}
+.btn:focus{
+  background-color: #16A086;
+  border-color: #16A086;
+  color:white;
 }
 
 #description {

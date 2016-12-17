@@ -11,9 +11,9 @@
 
   
 </head>
-
+<img id = "pic" src = "/public/etsetb.jpg">
 <body>
-  <h1 class = "text-center title" >ASSISCO - Control panel</h1>
+  <h1 class = "text-center title" >ASSISCO - Control panel<br></h1>
 
 
 <div class = "col-xs-8 col-xs-offset-2">
@@ -21,7 +21,7 @@
 </div>
 <div class = "col-xs-12 container container-fluid" id = "classes">
   </lnspac>Class name:
-  <input type = "text" placeholder ="Enter class number" id = "cname"> New subject:
+  <input type = "text" placeholder ="Enter class name" id = "cname"> New subject:
 <input class = "" type = "text" id = "newSubj" value=""><br><button onclick = "changesubject()" class = "btn btn-info submitbutton"> Change class subject </button> 
 </div>
 
@@ -30,8 +30,8 @@
   </div>
 <div class = "col-xs-12 container container-fluid" id = "addclasse">
   </lnspac>Class name:
-  <input type = "text" placeholder ="Enter class number" id = "cname2"> </lnspac>Capacity:
-<input class = "" type = "number" id = "capacity" value="0" min = 0><br><button onclick = "run()" class = "btn btn-info submitbutton">Add class to database</button> 
+  <input type = "text" placeholder ="Enter class name" id = "cname2"> </lnspac>Capacity:
+<input class = "" type = "number" id = "capacity" value="30" min = 0><br><button onclick = "run()" class = "btn btn-info submitbutton">Add class to database</button> 
 </div>
 
 
@@ -40,7 +40,7 @@
   </div>
 <div class = "col-xs-12 container container-fluid" id = "setAlumnesDiv">
   </lnspac>Class name:
-  <input type = "text" placeholder ="Enter class number" id = "cname3"> </lnspac>Current number of students:
+  <input type = "text" placeholder ="Enter class name" id = "cname3"> </lnspac>Current number of students:
 <input class = "" type = "number" id = "alumnes" value="0" min = 0><br><button onclick = "setAlumnes()" class = "btn btn-info submitbutton"> Change number of students </button> 
 </div>
 
@@ -50,15 +50,15 @@
   <button class = "col-xs-8 col-xs-offset-2 btn butprim" id ="seestats">Statistics</button>
  </div>
 <div class = "col-xs-12 container container-fluid">
-<div class = "col-xs-10 col-xs-offset-1 text-center" id = "stats">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum feugiat nisi, vitae semper nibh vehicula sit amet. Fusce lobortis sem purus, in dictum dolor venenatis eget. Fusce sit amet facilisis nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed mi libero, vestibulum sed pulvinar vel, pretium ac magna. Sed aliquet nulla at rutrum sodales. Maecenas a ornare ante. Curabitur a mattis lorem, nec imperdiet justo. Etiam et diam in ex consequat vestibulum. Nam ultrices dui sed metus interdum, sed venenatis erat varius. Nulla facilisi. Nullam pharetra odio ac fermentum aliquam. Maecenas ullamcorper libero a massa fringilla commodo. Nullam purus dolor, tempus a neque nec, aliquet vehicula nibh. Maecenas vulputate sed mauris quis iaculis. Nunc dignissim, mauris in elementum fringilla, nulla justo viverra eros, et congue ligula magna quis eros.
 
-Etiam ultricies lorem neque, ac bibendum urna luctus ac. Sed rutrum fringilla tortor ac pretium. Maecenas dapibus urna id metus tincidunt, tristique ornare massa consectetur. Sed in lacus ut purus gravida ullamcorper. Nullam sit amet lorem tempus, tempor leo eget, ultricies mauris. Phasellus vitae efficitur sapien. Quisque a vulputate risus, non tempus orci. Pellentesque sed nulla sit amet nibh tempus ullamcorper eget at eros. Curabitur varius elit nibh, quis ornare ante ultrices quis. Cras maximus porttitor congue. Donec finibus dolor at arcu vestibulum, nec convallis odio semper. Aliquam vitae porttitor libero.
-
-Praesent maximus tortor nisl, a imperdiet lorem elementum fermentum. Praesent vitae varius lacus. Vivamus laoreet ante nisi, at viverra mi maximus quis. Vivamus convallis et risus ut vestibulum. Nullam facilisis sollicitudin feugiat. Ut ultricies in neque a molestie. Phasellus urna ipsum, mollis id lacus vitae, porttitor finibus urna. In non luctus tortor. Duis lacinia finibus convallis. Nullam sed ligula scelerisque, commodo ipsum ut, dictum nisi. Mauris erat nisi, malesuada ac tellus vitae, sagittis hendrerit nisl. Ut quis tortor diam. Pellentesque tellus lectus, maximus id sollicitudin sit amet, mollis sed tortor. Nullam non fermentum quam, vitae pharetra lorem. Donec bibendum ac tortor non elementum. Etiam non pulvinar sem.
-  </br>
-Maecenas molestie malesuada nisl, non interdum tellus pulvinar mollis. Nullam tristique elit vel bibendum pretium. Duis fringilla dictum diam ut aliquam. Sed diam ex, bibendum non consectetur quis, molestie vitae nisl. Cras sit amet purus elementum, dictum diam ac, blandit tellus. Etiam at enim ante. Praesent hendrerit, ante eget condimentum imperdiet, nunc ipsum malesuada sapien, et rhoncus purus odio non arcu. Suspendisse tristique pellentesque odio. Mauris eget finibus dolor. Mauris et tempor erat. Donec tempor mauris eu ligula condimentum, ac malesuada lorem sagittis. Cras sit amet orci non nulla posuere euismod vel facilisis nisi. Maecenas eu nisl metus. Praesent neque elit, tincidunt id sollicitudin id, interdum vitae felis. In elementum posuere neque, et egestas lacus placerat a. Cras maximus euismod libero, consequat interdum diam posuere vitae.
+<div class = "text-center" id = "stats">
+  <table id="classTable">
+    <tbody>
+    
+    </tbody>
+  </table>
 </div>
+
 </div>
   <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 
