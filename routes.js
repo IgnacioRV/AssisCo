@@ -14,3 +14,4 @@ app.get('/status',function(req, res){
 });
 }
 module.exports(route);
+console.log("hola");

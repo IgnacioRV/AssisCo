@@ -130,6 +130,7 @@ app.get('/api/classesByNom/:nom', function(req, res){
 app.get('/api/classes',function(req, res){
 	var x = [];
 	for (var i = 0; i < classes.length; i++){ 
+		if (classes[i].nom.length != 0)
 		x.push({
 			"classe" : classes[i].nom,
 			"capacitat" : classes[i].capacitat,
@@ -242,6 +243,36 @@ app.get('/api/addAlumne/:class', function(req, res){
 			classes[i].alumnes++;
 			num = classes[i].alumnes;
 			res.send("Alumne afegit correctament \n Actualment hi ha " + num + " alumnes a la classe " +classNum);
+			}
+		}
+	}
+});
+
+var idStudentsInside = [];
+var sumIdStudentsInside = [];
+
+app.get('/api/addAlumne/:class/:id', function(req, res){
+	var classNum = req.params.class;
+	var id = req.params.id;
+	var num;
+	for (var i = 0; i < classes.length; i++){ 
+		if (classes[i].nom == classNum){
+			if (classes[i].capacitat <= classes[i].alumnes) {
+				res.send("L'Alumne no s'ha afegit ja que la classe esta plena");
+			}
+			else {
+				var sum = 0; 
+				while (id > 0){
+					sum+=id%10;
+					id = id/10;
+				}
+				if(sumIdStudentsInside.indexOf(sum)==-1){
+					classes[i].alumnes++;
+					num = classes[i].alumnes;
+					idStudentsInside.add(id);
+					sumIdStudentsInside.add(sum);
+				}
+				res.send("Alumne afegit correctament \n Actualment hi ha " + num + " alumnes a la classe " +classNum);
 			}
 		}
 	}
