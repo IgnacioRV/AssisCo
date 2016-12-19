@@ -1,0 +1,28 @@
+{
+  "name": "assisco",
+  "version": "1.0.0",
+  "description": "Assistance Control Service to be run on Intel Edison, features an RFID Reader Hack, a Node.js Server, and a user-friendly web app",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgnacioRV/AssisCo.git"
+  },
+  "author": "IgnacioRV",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgnacioRV/AssisCo/issues"
+  },
+  "engines": {
+    "node": "4.1.1"
+  },
+  "homepage": "https://github.com/IgnacioRV/AssisCo#readme"
+}
