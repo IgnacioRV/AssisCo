@@ -201,9 +201,29 @@ function drawTable(response) {
   table.draw(data, {showRowNumber: true, width: '50%', height: '100%'});
 
   google.visualization.events.addListener(table, 'select', function() {
-    var row = table.getSelection()[0].row;
-    alert('You selected ' + data.getValue(row, 0));
+   var classesUrl = window.location.origin +'/api/getIDsAlumnesInClass';
+    $.ajax({
+          url: classesUrl,
+          contentType: 'application/json; charset=utf-8',
+          cache: false,
+          type: "GET",
+          success: function(response) {
+              console.log(response);
+              alertStudents(response);
+          },
+          error: function(xhr) {
+            console.log("error")
+          }
+    });
+
+
   });
 }
-
+function alertStudents(response){
+  var str = "ID's dels alumnes a la classe A3001:\n \n";
+  for (var i = 0; i < response.length; i++){
+    str += response[i].id + "\n";
+  }
+  alert(str);
+}
 (populateStats)();
