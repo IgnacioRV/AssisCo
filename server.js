@@ -8,7 +8,6 @@ app.use('/public', express.static(process.cwd() + '/public'));
 /*
 
 	TODO: 
-	Add alumne ID to class
 	Count mean attendance rate
 
 */
@@ -18,8 +17,15 @@ app.use('./', express.static(process.cwd()));
 var classes = [];
 
 var numalumnes = 0;
+
 // Container for the names of alumnes in the class 
 var alumnes = [];
+
+
+// Container for the ID's of alumnes in the class 
+var idStudentsInside = [];
+//Container to fix the fact that sometimes the ID's are sent with the numbers swapped circularly
+var sumIdStudentsInside = [];
 
 var init = function(){
 	
@@ -248,8 +254,6 @@ app.get('/api/addAlumne/:class', function(req, res){
 	}
 });
 
-var idStudentsInside = [];
-var sumIdStudentsInside = [];
 
 app.get('/api/addAlumne/:class/:id', function(req, res){
 	var classNum = req.params.class;
@@ -304,7 +308,6 @@ app.get('/api/setalumnes', function(req, res){
 app.get('/api/getIDsAlumnesInClass', function(req, res){
 	var x = [];
 	for (var i = 0; i < idStudentsInside.length; i++){ 
-		if (classes[i].nom.length != 0)
 		x.push({
 			"id" : idStudentsInside[i]
 		});
