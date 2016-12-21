@@ -70,7 +70,7 @@ var result2 = exec5('node lcd.js '+num+" "+className);
 			}
 		}
 	}
-	serverCall.serverRequest( , alumnes[alumnes.length -1]);
+	serverCall.serverRequest(alumnes[alumnes.length -1]);
 	//console.log(result.toString());
 	working = false;
 	};

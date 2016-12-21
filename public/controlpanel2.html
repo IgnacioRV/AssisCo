@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Class control center</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="/public/style.css">
+
+  
+</head>
+<img id = "pic" src = "/public/etsetb.jpg">
+<body>
+  <h1 class = "text-center title" >ASSISCO - Control panel<br></h1>
+
+
+<div class = "col-xs-8 col-xs-offset-2">
+<button class = "col-xs-8 col-xs-offset-2 btn butprim" id = "subj"> Change a class subject</button>
+</div>
+<div class = "col-xs-12 container container-fluid" id = "classes">
+  </lnspac>Class name:
+  <input type = "text" placeholder ="Enter class name" id = "cname"> New subject:
+<input class = "" type = "text" id = "newSubj" value=""><br><button onclick = "changesubject()" class = "btn btn-info submitbutton"> Change class subject </button> 
+</div>
+
+<div class = "col-xs-8 col-xs-offset-2">
+  <button class = "col-xs-8 col-xs-offset-2 btn butprim" id ="add">Add a class</button>
+  </div>
+<div class = "col-xs-12 container container-fluid" id = "addclasse">
+  </lnspac>Class name:
+  <input type = "text" placeholder ="Enter class name" id = "cname2"> </lnspac>Capacity:
+<input class = "" type = "number" id = "capacity" value="30" min = 0><br><button onclick = "run()" class = "btn btn-info submitbutton">Add class to database</button> 
+</div>
+
+
+<div class = "col-xs-8 col-xs-offset-2">
+  <button class = "col-xs-8 col-xs-offset-2 btn butprim" id ="setAlumnes">Set number of students in a class</button>
+  </div>
+<div class = "col-xs-12 container container-fluid" id = "setAlumnesDiv">
+  </lnspac>Class name:
+  <input type = "text" placeholder ="Enter class name" id = "cname3"> </lnspac>Current number of students:
+<input class = "" type = "number" id = "alumnes" value="0" min = 0><br><button onclick = "setAlumnes()" class = "btn btn-info submitbutton"> Change number of students </button>
+</div>
+
+
+
+<div class = "col-xs-8 col-xs-offset-2">
+  <button class = "col-xs-8 col-xs-offset-2 btn butprim" id ="seestats">Statistics</button>
+ </div>
+<div class = "col-xs-12 container container-fluid">
+
+<div class = "text-center" id = "stats">
+  <table id="classTable">
+    <tbody>
+    
+    </tbody>
+  </table>
+</div>
+
+</div>
+<div class = "col-xs-8 col-xs-offset-2">
+  <button class = "col-xs-8 col-xs-offset-2 btn btn-danger" id ="logout" onclick="trylogout()">Logout</button>
+  </div>
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+
+    <script src="public/controlpanel2.js"></script>
+
+</body>
+</html>

@@ -159,71 +159,64 @@ function populateStats (){
           type: "GET",
           success: function(response) {
               console.log(response);
-              drawTable(response);
+              //$("#stats").text("");
+              $("#classTable").find('tbody').text("");
+              $("#classTable").find('tbody')
+                .append($('<tr>')
+                    .append($('<td>')
+                            .append(" Class ")
+                        )
+                    .append($('<td>')
+                            .append(" Capacity ")
+                        )
+                    .append($('<td>')
+                            .append(" Subject ")
+                        )
+                    .append($('<td>')
+                            .append(" Students in class ")
+                        )
+                     .append($('<td>')
+                            .append(" Attendance rate ")
+                        )
+                    );
+              var total = 0;
+              for (var i = 0; i < response.length; i++){
+                if (response[i].classe != ""){
+                  var assistencia = Math.round(response[i].alumnes *100 / response[i].capacitat); 
+                  console.log (assistencia);
+                  console.log(total);
+                  total += assistencia;
+                	$("#classTable").find('tbody')
+                    .append($('<tr>')
+                        .append($('<td>')
+                            .append(response[i].classe)
+                        )
+                    .append($('<td>')
+                            .append(response[i].capacitat)
+                        )
+                    .append($('<td>')
+                            .append(response[i].assignatura)
+                        )
+                    .append($('<td>')
+                            .append(response[i].alumnes)
+                        )
+                    .append($('<td>')
+                            .append(assistencia + "%")
+                        )
+                    );
+                }
+
+              }
+              console.log(total);
+              var str = "<div >Average attendance rate: "+ Math.round(total / response.length) +"%</div>" 
+              $("#classTable").find('tbody').append(str);
+              
           },
           error: function(xhr) {
             console.log("error")
           }
     });
     console.log("loaded");
-    
 }
 
- google.charts.load('current', {'packages': ['datatable','table', 'map', 'corechart']});
- google.charts.setOnLoadCallback(drawTable);
-function drawTable(response) {
-  
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', 'Class');
-  data.addColumn('string', 'Subject');
-  data.addColumn('number', 'Capacity');
-  data.addColumn('number', 'Students in class');
-  data.addColumn('number', 'Percentage attendance');
-  
-  data.addRows(response.length);
-  var total = 0;
-  for (var i = 0; i < response.length; i++){
-                if (response[i].classe != ""){
-                  var assistencia = Math.round(response[i].alumnes *100 / response[i].capacitat); 
-                  console.log (assistencia);
-                  console.log(total);
-                  total += assistencia;
-                  data.setCell(i, 0, response[i].classe);
-                  data.setCell(i, 1, response[i].assignatura);
-                  data.setCell(i, 2, response[i].capacitat);
-                  data.setCell(i, 3, response[i].alumnes);
-                  data.setCell(i, 4, assistencia);
-                }
-
-              }
-
-  var table = new google.visualization.Table(document.getElementById('table_div'));
-  table.draw(data, {showRowNumber: true, width: '50%', height: '100%'});
-
-  google.visualization.events.addListener(table, 'select', function() {
-   var classesUrl = window.location.origin +'/api/getIDsAlumnesInClass';
-    $.ajax({
-          url: classesUrl,
-          contentType: 'application/json; charset=utf-8',
-          cache: false,
-          type: "GET",
-          success: function(response) {
-              console.log(response);
-              alertStudents(response);
-          },
-          error: function(xhr) {
-            console.log("error")
-          }
-    });
-
-
-  });
-}
-function alertStudents(response){
-  var str = "Alumnes a la classe A3001:\n \n Ignacio Rasche \n Lluís Montull \n Júlia Nebot";
-  for (var i = 0; i < response.length; i++){
-    str += response[i].id + "\n";
-  }
-  alert(str);
-}
 (populateStats)();
